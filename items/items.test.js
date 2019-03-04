@@ -14,35 +14,28 @@ const armor = {
   enhancement: '[0]'
 };
 
-const enhancementLevel = [
-  '[+1]',
-  '[+2]',
-  '[+3]',
-  '[+4]',
-  '[+5]',
-  '[+6]',
-  '[+7]',
-  '[+8]',
-  '[+9]',
-  '[+10]',
-  '[+11]',
-  '[+12]',
-  '[+13]',
-  '[+14]',
-  '[+15]',
-  '[PRI]',
-  '[DUO]',
-  '[TRI]',
-  '[TED]',
-  '[PEN]'
-];
-
-// general format of a test
-describe('add()', () => {
-  it('description of check here', () => {
-    // insert assertion then use a matcher
-  });
-});
+const level = {
+  1: '[+1]',
+  2: '[+2]',
+  3: '[+3]',
+  4: '[+4]',
+  5: '[+5]',
+  6: '[+6]',
+  7: '[+7]',
+  8: '[+8]',
+  9: '[+9]',
+  10: '[+10]',
+  11: '[+11]',
+  12: '[+12]',
+  13: '[+13]',
+  14: '[+14]',
+  15: '[+15]',
+  16: '[PRI]',
+  17: '[DUO]',
+  18: '[TRI]',
+  19: '[TET]',
+  20: '[PEN]'
+};
 
 // USEFUL MATCHES
 /*
@@ -61,17 +54,22 @@ describe('add()', () => {
 // enhancer object has three function - success, fail, repair
 
 // repair - accepts item object, returns new item object with durability restored to 100
-describe('Take item in, return object with durability back to 100.', () => {
-  it('repair()', () => {
+describe('repair()', () => {
+  it('Take item object in, return object with durability back to 100.', () => {
     expect(repair(sword)).toMatchObject({
       ...sword,
       durability: 100
     });
   });
 
-  // it('', () => {
-  //   expect();
-  // });
+  it('should return null when argument is invalid', () => {
+    expect(repair()).toBeNull();
+    expect(repair(null)).toBeNull();
+    expect(repair(undefined)).toBeNull();
+    expect(repair([])).toBeNull();
+    expect(repair('string')).toBeNull();
+    expect(repair(1)).toBeNull();
+  });
 
   // test cases
   // item is already 100
