@@ -1,20 +1,21 @@
 module.exports = {
-  enhancer
+  success,
+  fail,
+  repair
 };
 
-// item object sample
-const itemSample = {
-  name: 'Iron Sword || Iron Shield',
-  type: 'Weapon || Armor',
-  durability: '0-100 is number && starts at 100',
-  enhancement: '0-15 PRI, DUO, TRI, TET, PEN && starts at 0'
-};
-
-const item = {
+const sword = {
   name: 'Iron Sword',
   type: 'Weapon',
   durability: 10,
-  enhancement: '+4'
+  enhancement: '[0]'
+};
+
+const armor = {
+  name: 'Iron Shield',
+  type: 'Armor',
+  durability: 100,
+  enhancement: '[0]'
 };
 
 const enhancementLevel = [
@@ -40,20 +41,18 @@ const enhancementLevel = [
   '[PEN]'
 ];
 
-const enhancer = item => {
-  success = item => {
-    item = {
-      ...item,
-      enhancement: item.enhancement[enhancementLevel + 1]
-    };
-  };
+function success(item, enhancementLevel) {
+  return (item = {
+    ...item,
+    enhancement: item.enhancement[enhancementLevel + 1]
+  });
+}
 
-  fail = item => {};
+function fail(item) {}
 
-  repair = item => {
-    item = {
-      ...item,
-      durability: 100
-    };
-  };
-};
+function repair(item) {
+  return (item = {
+    ...item,
+    durability: 100
+  });
+}
