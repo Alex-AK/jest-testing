@@ -1,3 +1,5 @@
+const { enhancer } = require('./items');
+
 // general format of a test
 describe('add()', () => {
   it('description of check here', () => {
@@ -20,14 +22,6 @@ describe('add()', () => {
 
 // MVP
 // enhancer object has three function - success, fail, repair
-
-// item object sample
-const itemSample = {
-  name: 'Iron Sword || Iron Shield',
-  type: 'Weapon || Armor',
-  durability: '0-100 is number && starts at 100',
-  enhancement: '0-15 PRI, DUO, TRI, TET, PEN && starts at 0'
-};
 
 const item = {
   name: 'Iron Sword',
