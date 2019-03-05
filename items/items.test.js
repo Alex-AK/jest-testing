@@ -15,29 +15,6 @@ const armor = {
   enhancement: 0
 };
 
-const level = {
-  1: '[+1]',
-  2: '[+2]',
-  3: '[+3]',
-  4: '[+4]',
-  5: '[+5]',
-  6: '[+6]',
-  7: '[+7]',
-  8: '[+8]',
-  9: '[+9]',
-  10: '[+10]',
-  11: '[+11]',
-  12: '[+12]',
-  13: '[+13]',
-  14: '[+14]',
-  15: '[+15]',
-  16: '[PRI]',
-  17: '[DUO]',
-  18: '[TRI]',
-  19: '[TET]',
-  20: '[PEN]'
-};
-
 // USEFUL MATCHES
 /*
   .toBe
@@ -84,21 +61,17 @@ describe('success()', () => {
   it('Take item in, return item with enhancement level + 1 and change display name accordingly', () => {
     const sword = {
       name: 'Iron Sword',
+      displayName: '[TRI] Iron Sword',
       type: 'Weapon',
       durability: 85,
-      enhancement: 11
+      enhancement: 18
     };
 
-    expect(success(sword).enhancement).toBe(sword.enhancement + 1);
-  });
-
-  it('Should return null when argument is invalid', () => {
-    expect(repair()).toBeNull();
-    expect(repair(null)).toBeNull();
-    expect(repair(undefined)).toBeNull();
-    expect(repair([])).toBeNull();
-    expect(repair('string')).toBeNull();
-    expect(repair(1)).toBeNull();
+    expect(success(sword)).toMatchObject({
+      ...sword,
+      displayName: '[TET] Iron Sword',
+      enhancement: 19
+    });
   });
 });
 
