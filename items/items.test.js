@@ -7,14 +7,6 @@ const sword = {
   enhancement: 11
 };
 
-const armor = {
-  name: 'Iron Shield',
-  displayName: 'Iron Shield',
-  type: 'Armor',
-  durability: 100,
-  enhancement: 0
-};
-
 // USEFUL MATCHES
 /*
   .toBe
@@ -26,6 +18,8 @@ const armor = {
   .toHaveLength
   .arrayContaining
   .stringContaining
+  .objectContaining
+  .toMatchObject
 */
 
 // MVP
