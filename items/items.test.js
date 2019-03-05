@@ -80,23 +80,27 @@ describe('repair()', () => {
 });
 
 // success - accepts item object, returns new item object modified according to success rules
-// describe('success()', () => {
-//   it('Take item in, return item with enhancement level + 1 and change display name accordingly', () => {
-//     expect(success(sword, level)).toMatchObject({
-//       ...sword,
-//       enhancement: sword.enhancement + 1
-//     });
-//   });
+describe('success()', () => {
+  it('Take item in, return item with enhancement level + 1 and change display name accordingly', () => {
+    const sword = {
+      name: 'Iron Sword',
+      type: 'Weapon',
+      durability: 85,
+      enhancement: 11
+    };
 
-// it('Should return null when argument is invalid', () => {
-//   expect(repair()).toBeNull();
-//   expect(repair(null)).toBeNull();
-//   expect(repair(undefined)).toBeNull();
-//   expect(repair([])).toBeNull();
-//   expect(repair('string')).toBeNull();
-//   expect(repair(1)).toBeNull();
-// });
-// });
+    expect(success(sword).enhancement).toBe(sword.enhancement + 1);
+  });
+
+  it('Should return null when argument is invalid', () => {
+    expect(repair()).toBeNull();
+    expect(repair(null)).toBeNull();
+    expect(repair(undefined)).toBeNull();
+    expect(repair([])).toBeNull();
+    expect(repair('string')).toBeNull();
+    expect(repair(1)).toBeNull();
+  });
+});
 
 // fail - accepts item object, returns new item object modified according to fail rules
 // The durability of an item cannot be less than 20 when the item's enhancement level is between +0 /and +14.
@@ -112,6 +116,17 @@ describe('fail()', () => {
     };
 
     expect(fail(sword).durability).toBe(sword.durability - 5);
+  });
+
+  it('Enhancement decreases by one, if enhance is above 16', () => {
+    const sword = {
+      name: 'Iron Sword',
+      type: 'Weapon',
+      durability: 85,
+      enhancement: 18
+    };
+
+    expect(fail(sword).enhancement).toBe(sword.enhancement - 1);
   });
 
   it('Enhancement decreases by one, if enhance is above 16', () => {

@@ -7,8 +7,8 @@ module.exports = {
 function success(item, level) {
   return (item = {
     ...item,
-    enhancement: enhancement + 1,
-    displayName: `${level[enhancement]} ${name}`
+    enhancement: item.enhancement + 1
+    // displayName: `${level[enhancement]} ${name}`
   });
 }
 
